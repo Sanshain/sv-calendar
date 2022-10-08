@@ -129,7 +129,7 @@ This prop allows you to style the div which wraps the Datepicker component.  Thi
 Getting started is as easy as forking, installing, and starting the snowpack dev server.
 
 ```bash
-git clone https://github.com/Phaqui/svelte-calendar.git
+git clone https://github.com/Sanshain/sve-calendar.git
 cd svelte-calendar
 npm install
 npm run dev
@@ -142,13 +142,6 @@ Head to [localhost:8000] in your browser. It should open automatically.
 You should see the demo page running. Edit a component file in `src`, save it, and your browser will reload the page so you can see your changes automatically.
 
 
-## Contributing
-
-Do feel free to apply your patches, suggestions and PRs to the [upstream] as well as this fork. However, don't be surprised if
-upstream doesn't react. After all, the only reason this fork exists, is to try to resurrect this project. If at some time the
-upstream comes back alive, I'd be happy to help merge any changes back.
-
-
 
 [demo page]: https://phaqui.github.io/svelte-calendar-resurrected/
 [`timeUtils`]: https://github.com/6eDesign/timeUtils
@@ -156,4 +149,4 @@ upstream comes back alive, I'd be happy to help merge any changes back.
 [Node.js]: https://nodejs.org
 [Rollup]: https://rollupjs.org
 [localhost:8000]: http://localhost:8000
-[upstream]: https://6edesign.github.io/svelte-calendar/
+
