@@ -7,14 +7,14 @@ A small date picker built with Svelte 3. Demo available here: [demo page].
 ## Installation
 
 ```sh
-npm i -D svelte-calendar
+npm i -D Sanshain/sve-calendar
 ```
 
 ## Basic usage
 
 ```html
 <script>
-  import Datepicker from 'svelte-calendar';
+  import Datepicker from 'sv-calendar';
 </script>
 
 <Datepicker start={minDate} end={maxDate} />
