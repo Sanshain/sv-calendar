@@ -1,5 +1,5 @@
 {
-  "name": "svelte-calendar",
+  "name": "sve-calendar",
   "svelte": "src/Datepicker.svelte",
   "main": "./public/build/bundle.esm.js",
   "browser": "./public/build/bundle.esm.js",
