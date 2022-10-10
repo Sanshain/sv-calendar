@@ -24,7 +24,8 @@ module.exports = {
   ],
   rules: {
 		'linebreak-style': 0,
-		'no-tabs': 0,
+    'no-tabs': 0,
+    "no-multiple-empty-lines": ["error", { "max": 2, "maxBOF": 0, "maxEOF": 0 }],
 		indent: 'off'
   }
 };

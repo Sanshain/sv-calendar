@@ -9,7 +9,7 @@ import { terser } from 'rollup-plugin-terser';
 import css from 'rollup-plugin-css-only';
 // import { less } from 'svelte-preprocess-less';
 import sveltePreprocess from 'svelte-preprocess';
-// import typescript from '@rollup/plugin-typescript';
+import typescript from '@rollup/plugin-typescript';
 // import typescript from "rollup-plugin-typescript2";
 // import { svelteSVG } from "rollup-plugin-svelte-svg";
 // import html from '@web/rollup-plugin-html';
@@ -21,15 +21,47 @@ import { writeFileSync } from 'fs';
 
 let release = false;
 
-// release = true;
+release = true;
 // const production = !process.env.ROLLUP_WATCH;
 
-module.exports = {
-  input: './examples/app.js',
-  output: {
-    format: 'iife',
-    name: 'app',
+let formats = {
+  example: {
+    input: "./examples/app.js",
+    name: 'Datepicker',
     file: './examples/build/app.js',
+    sourcemap: true,
+    format: 'iife'
+  },
+  iife: {    
+    name: 'Datepicker',
+    file: './public/build/bundle.iife.js',
+    sourcemap: true,
+    format: 'iife'
+  },
+  umd: {
+    name: 'Calendar',
+    file: './public/build/bundle.umd.js',
+    sourcemap: true,
+    format: 'umd'
+  },
+  esm: {
+    name: 'Calendar',
+    file: './public/build/bundle.esm.js',
+    sourcemap: true,
+    format: 'es'
+  }
+}
+
+const formatInfo = formats.esm;
+  
+
+module.exports = {
+  input: formatInfo.input ?? "./src/Datepicker.svelte",
+  output: {
+    format: formatInfo.format,
+    name: formatInfo.name,
+    file: formatInfo.file,
+
     // file: './scripts/dialogs_app.js',
 
     sourcemap: true
@@ -41,12 +73,7 @@ module.exports = {
 	// 	// pass empty object to enable defaults
 	// 	svgo: {}
 	// }),
-   //  typescript({
-   //    // rootDir: './source',
-   //    sourceMap: !release
-   //    // typescript: require("typescript"),
-   //    // verbosity: 3
-   //  }),
+
     svelte({
       // preprocess: {
       // 	// style: less({}),
@@ -68,12 +95,18 @@ module.exports = {
 
     // css
     css({
-		/* eslint-disable-next-line */
-      output: function (styles, styleNodes) {
-			writeFileSync('examples/app.css', styles);
-		}
+		    /* eslint-disable-next-line */
+        output: function (styles, styleNodes) {
+        writeFileSync(formatInfo.input ? 'examples/app.css' : 'public/calendar.css', styles);
+		  }
       // output: 'styles/dialog_app.css'
     }),
+    // typescript({
+    //   // rootDir: './source',
+    //   sourceMap: true,
+    //   // typescript: require("typescript"),
+    //   // verbosity: 3
+    // }),
     nodeResolve({
       browser: true,
       dedupe: ['svelte']

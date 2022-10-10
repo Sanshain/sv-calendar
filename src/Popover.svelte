@@ -1,5 +1,7 @@
 <script>
-  import { onMount, onDestroy, createEventDispatcher, tick } from 'svelte';
+  import {
+    onMount, onDestroy, createEventDispatcher, tick
+  } from 'svelte';
 
   const dispatch = createEventDispatcher();
 
@@ -56,7 +58,7 @@
   });
 
   onDestroy(() => {
-    document.removeEventListener("click", checkForFocusLoss);
+    document.removeEventListener('click', checkForFocusLoss);
   });
 
   const getDistanceToEdges = async () => {
@@ -104,9 +106,8 @@
     dispatch('opened');
   };
 
-  $: contentsWrapperStyles = alwaysOpen ? "" :
-    `transform: translate(-50%,-50%) translate(${translateX}px, ${translateY}px)`;
-    
+  $: contentsWrapperStyles = alwaysOpen ? '' : `transform: translate(-50%,-50%) translate(${translateX}px, ${translateY}px)`;
+
 </script>
 
 <svelte:window bind:innerWidth={w} />

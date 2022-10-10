@@ -33,7 +33,7 @@
   }
 
   $: {
-    let baseYear = year - year % 12;
+    let baseYear = year - (year % 12);
     availableYears = Array(12).fill(baseYear).map((yr, i) => {
       return {
         year: yr + i,
@@ -59,10 +59,10 @@
     overviewState = 1;
   }
 
-  function yearSelected(ev, year) {
+  function yearSelected(ev, _year) {
     ev.stopPropagation();
-    if (!year.selectable) return;    
-    dispatch('yearSelected', year.year);
+    if (!_year.selectable) return;
+    dispatch('yearSelected', _year.year);
     overviewState = 2;
   }
 
@@ -77,8 +77,8 @@
 		// For what following line? If disable it -> works fine
 		//  const incr = sign * overviewState + sign * 12 ** (overviewState - 1);
 
-    if (overviewState == 3) year += sign * 12
-		else{
+    if (overviewState === 3) year += sign * 12;
+		else {
       dispatch('incrementMonth', sign);
     }
   }
@@ -86,16 +86,17 @@
   function goBack() { _go(false, overviewState); }
   function goForward() { _go(true, overviewState); }
 
-  function determineHeadingLabel(overviewState) {
-    if (overviewState === 1) {
+  function determineHeadingLabel(viewState) {
+    if (viewState === 1) {
       return `${monthsOfYear[month][0]} ${year}`;
-    } if (overviewState === 2) {
+    } if (viewState === 2) {
       return year;
-    } if (overviewState === 3) {
+    } if (viewState === 3) {
       const from = availableYears[0].year;
       const to = availableYears[availableYears.length - 1].year;
       return `${from} - ${to}`;
     }
+    return '';
   }
   $: headingLabel = determineHeadingLabel(overviewState, month, year);
 </script>
