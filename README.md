@@ -1,8 +1,15 @@
-# svelte-calendar
+# sve-calendar
 
-A fork of svelte-calendar, as the origin project seemed pretty inactive (basically dead).
+A fork of svelte-calendar-resurrected, which one is a early fork of svelte-calendar, as the origin project seemed pretty inactive (basically dead).
 
 A small date picker built with Svelte 3. Demo available here: [demo page].
+
+### Fixed: 
+
+- switching between 12-year year selection periods
+- switching between months in accordance with their chronological sequence during the year (before this some months just slipped by)
+
+Now the picker differs from the original *svelte-calendar* in a smaller size (31kb minified) while sustaining the same functionality and from *svelte-calendar-resurrected* elimination of some critical malfunctions
 
 ## Installation
 
